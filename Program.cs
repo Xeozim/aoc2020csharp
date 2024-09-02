@@ -6,7 +6,8 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 
 Day1 day1 = new();
 // var answer = day1.runPart1Dave();
-var answer = day1.runPart2Dave();
+// var answer = day1.runPart2Dave();
+var answer = day1.runPart2Sorted();
 // var answer = day1.runPart1Rob();
 // var answer = day1.runPart2Rob();
 
