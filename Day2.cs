@@ -61,13 +61,15 @@ Your puzzle answer was 280.
 */
 
 interface IPasswordPolicy{
-    abstract public bool ValidatePassword(string password);
+    abstract public bool ValidatePassword(ReadOnlySpan<char> password);
 }
 
-class Password(string password, IPasswordPolicy policy)
+class Password(char[] password, IPasswordPolicy policy)
 {
-    readonly string password = password;
+    readonly char[] password = password;
     readonly IPasswordPolicy policy = policy;
+
+    ReadOnlySpan<char> PasswordSpan => password;
 
     protected class PasswordPolicySledRental(char requiredCharacter, int minCount, int maxCount) : IPasswordPolicy
     {
@@ -75,10 +77,10 @@ class Password(string password, IPasswordPolicy policy)
         readonly int minCount = minCount;
         readonly int maxCount = maxCount;
 
-        public bool ValidatePassword(string password){
+        public bool ValidatePassword(ReadOnlySpan<char> password){
             if (password == null){ return false; }
             // Count occurences of required character and check if within bounds
-            var occurences = password.Where(x => x == requiredCharacter).Count();
+            var occurences = password.Count(requiredCharacter);
             return occurences >= minCount && occurences <= maxCount;
         }
     }
@@ -88,41 +90,24 @@ class Password(string password, IPasswordPolicy policy)
         readonly int pos1 = pos1;
         readonly int pos2 = pos2;
 
-        public bool ValidatePassword(string password){
+        public bool ValidatePassword(ReadOnlySpan<char> password){
             if (password == null || password.Length < pos2 || password.Length < pos1){ return false; }
-            
-            var pos1valid = password[pos1 - 1] == requiredCharacter;
-            var pos2valid = password[pos2 - 1] == requiredCharacter;
 
-            return pos1valid ^ pos2valid;
+            return password[pos1 - 1] == requiredCharacter ^ password[pos2 - 1] == requiredCharacter;
         }
     }
 
-    // Gotta be a better way...
-    public static Password CreateWithSplit(string corruptedPassword, string policyType){
-        var mainParts = corruptedPassword.Split(":");
-        var password = mainParts[mainParts.Length - 1].Trim();
-        var policyParts = mainParts[0].Split(" ");
-        var requiredCharacter = policyParts[policyParts.Length - 1];
-        var countParts = policyParts[0].Split("-");
-        var num1 = int.Parse(countParts[0]);
-        var num2 = int.Parse(countParts[1]);
-        var policy = CreatePolicy(requiredCharacter.ToCharArray()[0], num1, num2, policyType);
-        return new Password(password, policy);
-    }
-
-    public static Password CreateWithSpan(string corruptedPassword, string policyType){
-        var span = corruptedPassword.AsSpan();
-        var hyphenIdx = span.IndexOf('-');
-        var colonIdx = span.IndexOf(':');
-        var num1 = int.Parse(span[..hyphenIdx]);
-        var num2 = int.Parse(span[(hyphenIdx+1)..(colonIdx-2)]);
-        var requiredCharacter = span[colonIdx-1];
-        var password = span[(colonIdx+2)..];
+    public static Password CreateFromCorrupted(ReadOnlySpan<char> corruptedPassword, string policyType){
+        var hyphenIdx = corruptedPassword.IndexOf('-');
+        var colonIdx = corruptedPassword.IndexOf(':');
+        var num1 = int.Parse(corruptedPassword[..hyphenIdx]);
+        var num2 = int.Parse(corruptedPassword[(hyphenIdx+1)..(colonIdx-2)]);
+        var requiredCharacter = corruptedPassword[colonIdx-1];
+        var password = corruptedPassword[(colonIdx+2)..];
 
         var policy = CreatePolicy(requiredCharacter, num1, num2, policyType);
 
-        return new Password(password.ToString(), policy);
+        return new Password(password.ToArray(), policy);
     }
 
     static IPasswordPolicy CreatePolicy(char requiredCharacter, int num1, int num2, string policyType){
@@ -194,7 +179,7 @@ class Day2PartOne : Day2
         Console.WriteLine("Day 2, Part 1");
 
         // Dumb way, iterate over all the passwords and check if they are valid
-        var passwords = inputLines.Select(x => Password.CreateWithSplit(x, POLICY_TYPE));
+        var passwords = inputLines.Select(x => Password.CreateFromCorrupted(x, POLICY_TYPE));
 
         return passwords.Where(x => x.IsValid()).Count();
     }
@@ -213,7 +198,7 @@ class Day2PartTwo : Day2
         Console.WriteLine("Day 2, Part 2");
 
         // Dumb way, iterate over all the passwords and check if they are valid
-        var passwords = inputLines.Select(x => Password.CreateWithSpan(x, POLICY_TYPE));
+        var passwords = inputLines.Select(x => Password.CreateFromCorrupted(x, POLICY_TYPE));
 
         var valid = passwords.Select(x => x.IsValid());
 
