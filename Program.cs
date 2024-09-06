@@ -16,9 +16,13 @@ var answer = -1;
 // day2PartOne.Test();
 // answer = day2PartOne.Run();
 
-Day2PartTwo day2PartTwo = new();
+// Day2PartTwo day2PartTwo = new();
 // day2PartTwo.Test();
-answer = day2PartTwo.Run();
+// answer = day2PartTwo.Run();
+
+Day3PartOne day3PartOne = new();
+// day3PartOne.Test();
+answer = day3PartOne.Run();
 
 Console.WriteLine($"Answer: {answer}");
 
