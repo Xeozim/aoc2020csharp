@@ -64,6 +64,31 @@ In this example, traversing the map using this slope would cause you to encounte
 
 Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many
 trees would you encounter?
+
+Your puzzle answer was 268.
+
+The first half of this puzzle is complete! It provides one gold star: *
+
+--- Part Two ---
+Time to check the rest of the slopes - you need to minimize the probability of a sudden arboreal
+stop, after all.
+
+Determine the number of trees you would encounter if, for each of the following slopes, you start at
+the top-left corner and traverse the map all the way to the bottom:
+
+Right 1, down 1.
+Right 3, down 1. (This is the slope you already checked.)
+Right 5, down 1.
+Right 7, down 1.
+Right 1, down 2.
+
+In the above example, these slopes would find 2, 7, 3, 4, and 2 tree(s) respectively;
+multiplied together, these produce the answer 336.
+
+What do you get if you multiply together the number of trees encountered on each of the listed slopes?
+
+Your puzzle answer was 3093068400.
+
 */
 
 // TODO: make an interface for common day methods
@@ -87,23 +112,12 @@ abstract class Day3 : Day
     protected override int DayNumber { get; } = 3;
 
     protected override string InputFilepath => "Day3Input.txt";
-}
 
-class Day3PartOne : Day3
-{
-    protected override int TestOutput { get; } = 7;
-
-    public Day3PartOne(): base() {}
-
-    public override int Run()
+    protected UInt64 GetTreesOnSlope(int xStep, int yStep)
     {
-        Console.WriteLine("Day 3, Part 1");
-
-        var xStep = 3;
         var repeatWidth = inputLines.Last().Length; // Use last because then no /r or /n
-        var yStep = 1;
         var (x, y) = (0, 0);
-        var treeCount = 0;
+        UInt64 treeCount = 0;
         var yMax = inputLines.Count() - 1;
         // Because we're doing indexed access not iteration better to convert to an array
         var inputArr = inputLines.ToArray(); 
@@ -119,5 +133,53 @@ class Day3PartOne : Day3
 
         return treeCount;
     }
+}
 
+class Day3PartOne : Day3
+{
+    protected override UInt64 TestOutput { get; } = 7;
+
+    public Day3PartOne(): base() {}
+
+    public override UInt64 Run()
+    {
+        Console.WriteLine("Day 3, Part 1");
+
+        return GetTreesOnSlope(3,1);
+    }
+}
+
+
+class Day3PartTwo : Day3
+{
+    protected override UInt64 TestOutput { get; } = 336;
+
+    public Day3PartTwo(): base() {}
+
+    public override UInt64 Run()
+    {
+        Console.WriteLine("Day 3, Part 2");
+
+        var slopes = new List<(int, int)>
+        {
+            (1, 1),
+            (3, 1),
+            (5, 1),
+            (7, 1),
+            (1, 2),
+        };
+
+        // Multipying answers together so start at 1
+        UInt64 answer = 1;
+        for (int i = 0; i < slopes.Count; i++)
+        {
+            var (xStep, yStep) = slopes[i];
+            answer *= GetTreesOnSlope(xStep, yStep);
+            if (IsTestMode){
+                Console.WriteLine($"Slope {i}, answer so far: {answer}");
+            }
+        }
+
+        return answer;
+    }
 }

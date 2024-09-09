@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 Stopwatch stopwatch = Stopwatch.StartNew();
 
-var answer = -1;
+// var answer = -1;
 // Day1 day1 = new();
 // answer = day1.runPart1Dave();
 // answer = day1.runPart2Dave();
@@ -20,9 +20,13 @@ var answer = -1;
 // day2PartTwo.Test();
 // answer = day2PartTwo.Run();
 
-Day3PartOne day3PartOne = new();
+// Day3PartOne day3PartOne = new();
 // day3PartOne.Test();
-answer = day3PartOne.Run();
+// answer = day3PartOne.Run();
+
+Day3PartTwo day3PartTwo = new();
+day3PartTwo.Test();
+var answer = day3PartTwo.Run();
 
 Console.WriteLine($"Answer: {answer}");
 

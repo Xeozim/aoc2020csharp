@@ -1,15 +1,19 @@
 // Base Day class
 abstract class Day
 {
-    protected IEnumerable<char[]> inputLines;
+    protected IEnumerable<char[]> inputLines = [];
 
-    protected abstract int TestOutput { get; }
+    protected abstract UInt64 TestOutput { get; }
     protected abstract IEnumerable<char[]> TestInput { get; }
     protected abstract int DayNumber { get; }
     protected abstract string InputFilepath { get; }
 
+    protected bool IsTestMode = false;
+
     // Protected because the base class for Day doesn't implement the solution
-    protected Day()
+    protected Day() { ReadInput(); }
+
+    protected void ReadInput()
     {
         // ReadAllLines returns an array of strings
         // Each entry in the string array is a single line
@@ -19,7 +23,10 @@ abstract class Day
 
     public bool Test()
     {
+        // Test mode setup
+        IsTestMode = true;
         // Overwrite the input with the test input
+        var realInput = inputLines;
         inputLines = TestInput;
 
         // Check the test output matches the expected value
@@ -31,8 +38,12 @@ abstract class Day
         Console.WriteLine($"Expected : {TestOutput}");
         Console.WriteLine($"Pass     : {pass}");
 
+        // Rervert test mode setup
+        IsTestMode = false;
+        inputLines = realInput;
+
         return pass;
     }
 
-    public abstract int Run();
+    public abstract UInt64 Run();
 }
