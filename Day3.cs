@@ -113,11 +113,11 @@ abstract class Day3 : Day
 
     protected override string InputFilepath => "Day3Input.txt";
 
-    protected UInt64 GetTreesOnSlope(int xStep, int yStep)
+    protected ulong GetTreesOnSlope(int xStep, int yStep)
     {
         var repeatWidth = inputLines.Last().Length; // Use last because then no /r or /n
         var (x, y) = (0, 0);
-        UInt64 treeCount = 0;
+        ulong treeCount = 0;
         var yMax = inputLines.Count() - 1;
         // Because we're doing indexed access not iteration better to convert to an array
         var inputArr = inputLines.ToArray(); 
@@ -137,11 +137,11 @@ abstract class Day3 : Day
 
 class Day3PartOne : Day3
 {
-    protected override UInt64 TestOutput { get; } = 7;
+    protected override ulong TestOutput { get; } = 7;
 
     public Day3PartOne(): base() {}
 
-    public override UInt64 Run()
+    public override ulong Run()
     {
         Console.WriteLine("Day 3, Part 1");
 
@@ -152,11 +152,11 @@ class Day3PartOne : Day3
 
 class Day3PartTwo : Day3
 {
-    protected override UInt64 TestOutput { get; } = 336;
+    protected override ulong TestOutput { get; } = 336;
 
     public Day3PartTwo(): base() {}
 
-    public override UInt64 Run()
+    public override ulong Run()
     {
         Console.WriteLine("Day 3, Part 2");
 
@@ -170,7 +170,7 @@ class Day3PartTwo : Day3
         };
 
         // Multipying answers together so start at 1
-        UInt64 answer = 1;
+        ulong answer = 1;
         for (int i = 0; i < slopes.Count; i++)
         {
             var (xStep, yStep) = slopes[i];

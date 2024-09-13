@@ -3,7 +3,7 @@ abstract class Day
 {
     protected IEnumerable<char[]> inputLines = [];
 
-    protected abstract UInt64 TestOutput { get; }
+    protected abstract ulong TestOutput { get; }
     protected abstract IEnumerable<char[]> TestInput { get; }
     protected abstract int DayNumber { get; }
     protected abstract string InputFilepath { get; }
@@ -45,5 +45,5 @@ abstract class Day
         return pass;
     }
 
-    public abstract UInt64 Run();
+    public abstract ulong Run();
 }
