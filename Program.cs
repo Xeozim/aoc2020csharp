@@ -24,9 +24,13 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 // day3PartOne.Test();
 // answer = day3PartOne.Run();
 
-Day3PartTwo day3PartTwo = new();
-day3PartTwo.Test();
-var answer = day3PartTwo.Run();
+// Day3PartTwo day3PartTwo = new();
+// day3PartTwo.Test();
+// var answer = day3PartTwo.Run();
+
+Day4PartOne day4PartOne = new();
+day4PartOne.Test();
+var answer = day4PartOne.Run();
 
 Console.WriteLine($"Answer: {answer}");
 

@@ -17,7 +17,8 @@
             "logging": {
             "moduleLoad": false
             },
-            "requireExactSource": false
+            "requireExactSource": false,
+            "preLaunchTask": "build",  // Ensures the project is built before running
         }
     ]
 }
