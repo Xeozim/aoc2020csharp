@@ -51,7 +51,28 @@ BFFFBBFRRR: row 70, column 7, seat ID 567.
 FFFBBBFRRR: row 14, column 7, seat ID 119.
 BBFFBBFRLL: row 102, column 4, seat ID 820.
 
-As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass?
+As a sanity check, look through your list of boarding passes. What is the highest seat ID on a
+boarding pass?
+
+Your puzzle answer was 926.
+
+The first half of this puzzle is complete! It provides one gold star: *
+
+--- Part Two ---
+Ding! The "fasten seat belt" signs have turned on. Time to find your seat.
+
+It's a completely full flight, so your seat should be the only missing boarding pass in your list.
+However, there's a catch: some of the seats at the very front and back of the plane don't exist on
+this aircraft, so they'll be missing from your list as well.
+
+Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1 from yours will be
+in your list.
+
+What is the ID of your seat?
+
+Your puzzle answer was 657.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
 */
 
 // Represents seating information
@@ -116,22 +137,17 @@ class SeatInfo{
 abstract class Day5 : Day
 {
     protected override IEnumerable<char[]> TestInput { get; } = [[.. "FBFBBFFRLR"]];
+    protected override ulong TestOutput { get; } = 357;
 
     protected override int DayNumber { get; } = 5;
 
-    protected override string InputFilepath => "Day5Input.txt"; 
-}
+    protected override string InputFilepath => "Day5Input.txt";
 
-class Day5PartOne : Day5
-{
-    protected override ulong TestOutput { get; } = 357;
+    protected IEnumerable<SeatInfo> seats = [];
 
-    public Day5PartOne(): base() {}
-
-    public override ulong Run()
+    protected void LoadInput()
     {
-        Console.WriteLine("Day 5 Part One");
-        var seats = inputLines.Select(x => new SeatInfo(x));
+        seats = inputLines.Select(x => new SeatInfo(x));
 
         if (IsTestMode){
             foreach (var (line, idx) in inputLines.Select((line, idx) => (line, idx))){
@@ -139,8 +155,53 @@ class Day5PartOne : Day5
                 Console.WriteLine($"Seat : {seats.ElementAt(idx)}");
             }
         }
+    }
+}
+
+class Day5PartOne : Day5
+{
+    public Day5PartOne(): base() {}
+
+    public override ulong Run()
+    {
+        Console.WriteLine("Day 5 Part One");
+        LoadInput();
 
         var seatWithHighestId = seats.OrderBy(x=>x.Id).Last();
         return seatWithHighestId == null ? 0 : (ulong)seatWithHighestId.Id;
+    }
+}
+
+class Day5PartTwo : Day5
+{
+    public Day5PartTwo(): base() {}
+
+    public override ulong Run()
+    {
+        Console.WriteLine("Day 5 Part Two");
+        LoadInput();
+
+        var seatWithLowestId = seats.OrderBy(x=>x.Id).First();
+
+        if (seatWithLowestId == null){
+            throw new Exception("Invalid input");
+        } else {
+            // Sort the seats by ID and find the first gap
+            var lastId = seatWithLowestId.Id;
+            foreach (var seat in seats.OrderBy(x=>x.Id))
+            {
+                if (seat.Id - lastId > 1){
+                    return (ulong) lastId + 1;
+                } else {
+                    lastId = seat.Id;
+                }
+            }
+        }
+
+        throw new Exception("Invalid input");
+    }
+
+    public override bool Test(){
+        throw new NotImplementedException("Day 5 Part Two has no tests");
     }
 }

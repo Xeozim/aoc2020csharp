@@ -21,7 +21,7 @@ abstract class Day
         inputLines = File.ReadAllLines(InputFilepath).Select(x => x.ToArray());
     }
 
-    public bool Test()
+    public virtual bool Test()
     {
         // Test mode setup
         IsTestMode = true;
