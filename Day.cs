@@ -1,5 +1,7 @@
+namespace aoc2020;
+
 // Base Day class
-abstract class Day
+public abstract class Day
 {
     protected IEnumerable<char[]> inputLines = [];
 

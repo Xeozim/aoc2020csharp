@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Diagnostics;
+using aoc2020;
 
 Stopwatch stopwatch = Stopwatch.StartNew();
 

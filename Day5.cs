@@ -75,8 +75,10 @@ Your puzzle answer was 657.
 Both parts of this puzzle are complete! They provide two gold stars: **
 */
 
+namespace aoc2020;
+
 // Represents seating information
-class SeatInfo{
+public class SeatInfo{
     private readonly int _row = 0;
     public int Row { get => _row; }
     private readonly int _column = 0;
@@ -134,7 +136,7 @@ class SeatInfo{
 }
 
 // TODO: make an interface for common day methods
-abstract class Day5 : Day
+public abstract class Day5 : Day
 {
     protected override IEnumerable<char[]> TestInput { get; } = [[.. "FBFBBFFRLR"]];
     protected override ulong TestOutput { get; } = 357;
@@ -158,7 +160,7 @@ abstract class Day5 : Day
     }
 }
 
-class Day5PartOne : Day5
+public class Day5PartOne : Day5
 {
     public Day5PartOne(): base() {}
 
@@ -172,7 +174,7 @@ class Day5PartOne : Day5
     }
 }
 
-class Day5PartTwo : Day5
+public class Day5PartTwo : Day5
 {
     public Day5PartTwo(): base() {}
 

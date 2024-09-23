@@ -59,6 +59,7 @@ How many passwords are valid according to the new interpretation of the policies
 Your puzzle answer was 280.
 
 */
+namespace aoc2020;
 
 interface IPasswordPolicy{
     abstract public bool ValidatePassword(ReadOnlySpan<char> password);
@@ -125,7 +126,7 @@ class Password(char[] password, IPasswordPolicy policy)
 }
 
 // TODO: make an interface for common day methods
-abstract class Day2
+public abstract class Day2
 {
     protected IEnumerable<string> inputLines;
 
@@ -166,7 +167,7 @@ abstract class Day2
     public abstract int Run();
 }
 
-class Day2PartOne : Day2
+public class Day2PartOne : Day2
 {
     protected override int TestOutput { get; } = 2;
 
@@ -185,7 +186,7 @@ class Day2PartOne : Day2
     }
 }
 
-class Day2PartTwo : Day2
+public class Day2PartTwo : Day2
 {
     protected override int TestOutput { get; } = 1;
 

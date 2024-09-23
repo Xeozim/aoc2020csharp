@@ -90,9 +90,10 @@ What do you get if you multiply together the number of trees encountered on each
 Your puzzle answer was 3093068400.
 
 */
+namespace aoc2020;
 
 // TODO: make an interface for common day methods
-abstract class Day3 : Day
+public abstract class Day3 : Day
 {
     // Test data
     // TODO: Look at NUnit or similar test framework
@@ -135,7 +136,7 @@ abstract class Day3 : Day
     }
 }
 
-class Day3PartOne : Day3
+public class Day3PartOne : Day3
 {
     protected override ulong TestOutput { get; } = 7;
 
@@ -150,7 +151,7 @@ class Day3PartOne : Day3
 }
 
 
-class Day3PartTwo : Day3
+public class Day3PartTwo : Day3
 {
     protected override ulong TestOutput { get; } = 336;
 

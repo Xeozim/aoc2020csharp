@@ -23,6 +23,7 @@ For example, suppose your expense report contained the following:
 299
 675
 1456
+
 In this list, the two entries that sum to 2020 are 1721 and 299. Multiplying them together produces 1721 * 299 = 514579, so the correct answer is 514579.
 
 Of course, your expense report is much larger. Find the two entries that sum to 2020; what do you get if you multiply them together?
@@ -38,12 +39,14 @@ In your expense report, what is the product of the three entries that sum to 202
 
 Your puzzle answer was 201251610.
 */
+namespace aoc2020;
 
 // TODO: make an interface for common day methods
-class Day1
+public class Day1
 {
 
     IEnumerable<int> inputValues;
+    public IEnumerable<int> InputValues { get => inputValues; set => inputValues = value; }
 
     public Day1()
     {
@@ -57,7 +60,7 @@ class Day1
     {
         Console.WriteLine("Day 1, Part 1 (Dave's Version)");
 
-        var inputArr = inputValues.ToArray();
+        var inputArr = InputValues.ToArray();
 
         for (int i=0; i<inputArr.Length; i++){
             for (int j=1; j<inputArr.Length; j++){
@@ -78,7 +81,7 @@ class Day1
     {
         Console.WriteLine("Day 1, Part 2 (Dave's Version)");
 
-        var inputArr = inputValues.ToArray();
+        var inputArr = InputValues.ToArray();
 
         for (int i=0; i<inputArr.Length; i++){
             for (int j=1; j<inputArr.Length; j++){
@@ -106,7 +109,7 @@ class Day1
     */ 
     public int runPart2Sorted()
     {
-        var inputArr = inputValues.Order().ToArray();
+        var inputArr = InputValues.Order().ToArray();
 
         for (int i=0; i<inputArr.Length; i++){
             var iVal = inputArr[i];
@@ -140,8 +143,8 @@ class Day1
     {
         Console.WriteLine("Day 1, Part 1 (Rob's Version)");
 
-        var calculations = inputValues
-            .SelectMany((x,i) => inputValues
+        var calculations = InputValues
+            .SelectMany((x,i) => InputValues
                 .Where((y,j) => i != j)
                 .Select(y => (A : x, B : y, Total : x+y)));
 
@@ -155,9 +158,9 @@ class Day1
     {
         Console.WriteLine("Day 1, Part 2 (Rob's Version)");
 
-        var calculations = inputValues
-            .SelectMany((x,i) => inputValues
-                .SelectMany((y,j) => inputValues
+        var calculations = InputValues
+            .SelectMany((x,i) => InputValues
+                .SelectMany((y,j) => InputValues
                 .Where((z,k) => i != j && j != k)
                 .Select(z => (A : x, B : y, C : z, Total : x+y+z))));
         

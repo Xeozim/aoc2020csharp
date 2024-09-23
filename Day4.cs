@@ -134,8 +134,9 @@ Your puzzle answer was 186.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
 */
+namespace aoc2020;
 
-class Passport(int? byr, int? iyr, int? eyr, string? hgt, string? hcl, string? ecl, string? pid, int? cid)
+public class Passport(int? byr, int? iyr, int? eyr, string? hgt, string? hcl, string? ecl, string? pid, int? cid)
 {
     int? byr = byr;
     int? iyr = iyr;
@@ -172,7 +173,7 @@ class Passport(int? byr, int? iyr, int? eyr, string? hgt, string? hcl, string? e
 }
 
 // TODO: make an interface for common day methods
-abstract class Day4 : Day
+public abstract class Day4 : Day
 {
     protected override IEnumerable<char[]> TestInput { get; } = 
 @"ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -265,7 +266,7 @@ iyr:2011 ecl:brn hgt:59in".Split("\n").Select(x => x.ToArray());
     }
 }
 
-class Day4PartOne : Day4
+public class Day4PartOne : Day4
 {
     protected override ulong TestOutput { get; } = 2;
 
@@ -287,7 +288,7 @@ class Day4PartOne : Day4
 }
 
 
-class Day4PartTwo : Day4
+public class Day4PartTwo : Day4
 {
     protected override IEnumerable<char[]> TestInput { get; } = 
 @"eyr:1972 cid:100
