@@ -144,7 +144,7 @@ public abstract class Day2
         // ReadAllLines returns an array of strings
         // Each entry in the string array is a single line
         // Convert everything to an integer up front
-        inputLines = File.ReadAllLines("Day2Input.txt");
+        inputLines = File.ReadAllLines("/Users/cod1cbg/src/aoc2020csharp/aoc2020/inputs/Day2Input.txt");
     }
 
     public bool Test()

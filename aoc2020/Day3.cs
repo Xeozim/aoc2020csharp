@@ -112,7 +112,7 @@ public abstract class Day3 : Day
 
     protected override int DayNumber { get; } = 3;
 
-    protected override string InputFilepath => "Day3Input.txt";
+    protected override string InputFilepath => "/Users/cod1cbg/src/aoc2020csharp/aoc2020/inputs/Day3Input.txt";
 
     protected ulong GetTreesOnSlope(int xStep, int yStep)
     {

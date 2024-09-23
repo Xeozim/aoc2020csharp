@@ -192,7 +192,7 @@ iyr:2011 ecl:brn hgt:59in".Split("\n").Select(x => x.ToArray());
 
     protected override int DayNumber { get; } = 4;
 
-    protected override string InputFilepath => "Day4Input.txt";
+    protected override string InputFilepath => "/Users/cod1cbg/src/aoc2020csharp/aoc2020/inputs/Day4Input.txt";
 
     private object? DictGetOrNull(Dictionary<string,object> dict, string key){
         if (dict.TryGetValue(key, out object? obj)){

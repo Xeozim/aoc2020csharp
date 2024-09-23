@@ -143,7 +143,7 @@ public abstract class Day5 : Day
 
     protected override int DayNumber { get; } = 5;
 
-    protected override string InputFilepath => "Day5Input.txt";
+    protected override string InputFilepath => "/Users/cod1cbg/src/aoc2020csharp/aoc2020/inputs/Day5Input.txt";
 
     protected IEnumerable<SeatInfo> seats = [];
 

@@ -53,7 +53,7 @@ public class Day1
         // ReadAllLines returns an array of strings
         // Each entry in the string array is a single line
         // Convert everything to an integer up front
-        inputValues = File.ReadAllLines("Day1Input.txt").Select(int.Parse);
+        inputValues = File.ReadAllLines("/Users/cod1cbg/src/aoc2020csharp/aoc2020/inputs/Day1Input.txt").Select(int.Parse);
     }
 
     public int answerPart1Dave()
