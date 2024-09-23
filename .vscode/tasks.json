@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/${workspaceFolderBasename}.generated.sln",
+                "${workspaceFolder}/${workspaceFolderBasename}.sln",
             ],
             "problemMatcher": "$msCompile",
             "group": {

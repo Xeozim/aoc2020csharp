@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             // Assumes that the dll name is the same as the base workspace folder name
-            "program": "${workspaceFolder}/bin/Debug/net8.0/${workspaceFolderBasename}.dll",
+            "program": "${workspaceFolder}/aoc2020/bin/Debug/net8.0/aoc2020.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/aoc2020",
             "stopAtEntry": false,
             "console": "internalConsole",
             "logging": {
