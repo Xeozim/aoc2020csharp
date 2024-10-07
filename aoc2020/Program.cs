@@ -50,11 +50,12 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 
 
 Day6PartOne day6PartOne = new();
-day6PartOne.Test();
-var answer = day6PartOne.Run();
+// day6PartOne.Test();
+// var answer = day6PartOne.Run();
 
-// Day5PartTwo day5PartTwo = new();
-// var answer = day5PartTwo.Run();
+Day6PartTwo day6PartTwo = new();
+day6PartTwo.Test();
+var answer = day6PartTwo.Run();
 
 Console.WriteLine($"Answer: {answer}");
 
