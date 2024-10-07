@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "AOC Debug",
             "type": "coreclr",
             "request": "launch",
             // Assumes that the dll name is the same as the base workspace folder name

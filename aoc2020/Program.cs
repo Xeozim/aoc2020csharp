@@ -13,6 +13,7 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 // answer = day1.runPart1Rob();
 // answer = day1.runPart2Rob();
 
+
 // Day2PartOne day2PartOne = new();
 // day2PartOne.Test();
 // answer = day2PartOne.Run();
@@ -20,6 +21,7 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 // Day2PartTwo day2PartTwo = new();
 // day2PartTwo.Test();
 // answer = day2PartTwo.Run();
+
 
 // Day3PartOne day3PartOne = new();
 // day3PartOne.Test();
@@ -29,6 +31,7 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 // day3PartTwo.Test();
 // var answer = day3PartTwo.Run();
 
+
 // Day4PartOne day4PartOne = new();
 // day4PartOne.Test();
 // var answer = day4PartOne.Run();
@@ -37,12 +40,21 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 // day4PartTwo.Test();
 // var answer = day4PartTwo.Run();
 
+
 // Day5PartOne day5PartOne = new();
 // day5PartOne.Test();
 // var answer = day5PartOne.Run();
 
-Day5PartTwo day5PartTwo = new();
-var answer = day5PartTwo.Run();
+// Day5PartTwo day5PartTwo = new();
+// var answer = day5PartTwo.Run();
+
+
+Day6PartOne day6PartOne = new();
+day6PartOne.Test();
+var answer = day6PartOne.Run();
+
+// Day5PartTwo day5PartTwo = new();
+// var answer = day5PartTwo.Run();
 
 Console.WriteLine($"Answer: {answer}");
 

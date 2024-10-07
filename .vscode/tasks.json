@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/${workspaceFolderBasename}.sln",
+                "${workspaceFolder}/aoc2020csharp.sln",
             ],
             "problemMatcher": "$msCompile",
             "group": {
