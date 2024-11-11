@@ -50,7 +50,7 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 
 
 Day6PartOne day6PartOne = new();
-// day6PartOne.Test();
+day6PartOne.Test();
 // var answer = day6PartOne.Run();
 
 Day6PartTwo day6PartTwo = new();
